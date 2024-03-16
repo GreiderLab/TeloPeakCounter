@@ -46,7 +46,7 @@ which is the highest value in a given window (the ceilingWindow) of the signal.
 
 The following graph is an example showing the signal (blue) and the ceiling (orange) of the signal.
 
----
+![image](https://github.com/GreiderLab/TeloPeakCounter/assets/78556850/2db4dbc3-cee0-4705-a7fa-887cf78e4766)
 
 Once these ceiling values have been calculated, we make the assumption that all reads have telomere and that the telomere is at the end of the read.
 We then use a "stepBack" value to find the index of telomeric signal data, and use this to identify what hight the telomeric region should be.
@@ -54,19 +54,20 @@ We then use a "stepBack" value to find the index of telomeric signal data, and u
 Now that we know the "ceiling height" of the telomeric region within the signal, we scan forward and backwards to identify the boundaries of
 this region. Once this is done, we get a graph that looks like this:
 
----
+![image](https://github.com/GreiderLab/TeloPeakCounter/assets/78556850/53875fb2-2c93-485f-9809-1187bc31e2a2)
 
 ### Peak Counting
 
 Finally, we go onto step two, where we count the number of peaks in the telomeric region. This section is rather simple. Two thresholds are used,
-one to start counting a "peak", and another to mark the end of a "peak". For example, imagine a wave signal moving upwards, starting at 0 and going
-to 100. The first threshold my be at 50, so the algorithm will start counting the peak once the signal goes above 50. The second threshold may be at 80,
-so the algorithm will stop counting the peak once the signal goes below 80. These values are just examples, and the actual values used were determinted
-by manually inspecting the signal data and determining the best way to count the peaks.
+one to start counting a "peak", and another to mark the end of a "peak". For example, imagine a wave signal moving upwards, moving between 250 and 
+500. The first threshold may be at 400 (green line bellow), so the algorithm will start counting the peak once the signal goes above 400. The second 
+threshold may be at 350 (purple line), marking the end of a peak and adding 1 to the count of peaks once the signal goes below 350. These values were 
+determinted by manually inspecting the signal data and determining the best way to count the peaks.
 
-The following graph shows a close up of the telomeric region, with the peaks marked in **\***
+The following graph shows a close up of the telomeric region, with the green line showing the start threshold, the purple showing the stop threshold, 
+and the red line showing the telomere ceiling value from earlier. 
 
----
+![image](https://github.com/GreiderLab/TeloPeakCounter/assets/78556850/77af595f-ab3d-4b8f-9f7a-4de5474d45f4)
 
 ## Notes:
 
