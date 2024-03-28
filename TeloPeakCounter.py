@@ -3,7 +3,7 @@ import numpy as np
 from scipy.spatial.distance import euclidean
 import matplotlib.pyplot as plt
 
-# Takes in SMOOTHED and TRIMMED signal 
+# Takes in TRIMMED signal 
 def getPeakCount(signalIn, teloCeiling, upperCutOffOffset, lowerCutOffOffset):
     rising = True
     count = 0
@@ -11,7 +11,6 @@ def getPeakCount(signalIn, teloCeiling, upperCutOffOffset, lowerCutOffOffset):
     lowerCutOff = upperCutOff + lowerCutOffOffset
 
     for i in range(len(signalIn)):
-        # if rising and signalIn[i] < upperCutOff and signalIn[i+1] < upperCutOff:
         if len(signalIn)-i<= 10:
             return count 
         if rising and signalIn[i] < lowerCutOff and all(values<lowerCutOff for values in signalIn[i:i+10]):
@@ -34,7 +33,7 @@ def getTeloCountLength(row):
     else:
         flippedSignal =  [-x for x in reversed(row["signal"])]
         # flippedSignal =  [x for x in reversed(row["signal"])]
-        return getTeloCountLengthFromSignal(flippedSignal)
+        return getTeloCountLengthFromSignal(flippedSignal, isGStrand=False)
 
 def getTeloRegionFromCeilings(teloCenter, ceiling, teloCeiling, vBuffer = 30, lookAheadBuffer=-1, teloCeilingCeof=0.25, lookAheadCeof=0.5):
     start = 0

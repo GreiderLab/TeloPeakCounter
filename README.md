@@ -14,6 +14,7 @@ TeloPeakCounter requires the following packages to be installed:
 statistics
 numpy
 matplotlib
+pandarallel
 ```
 
 ## Usage
@@ -59,13 +60,12 @@ this region. Once this is done, we get a graph that looks like this:
 ### Peak Counting
 
 Finally, we go onto step two, where we count the number of peaks in the telomeric region. This section is rather simple. Two thresholds are used,
-one to start counting a "peak", and another to mark the end of a "peak". For example, imagine a wave signal moving upwards, moving between 250 and 
-500. The first threshold may be at 400 (green line bellow), so the algorithm will start counting the peak once the signal goes above 400. The second 
-threshold may be at 350 (purple line), marking the end of a peak and adding 1 to the count of peaks once the signal goes below 350. These values were 
+one to start counting a "peak", and another to mark the end of a "peak". For example, imagine a wave signal moving upwards, moving between 250 and 500. The first threshold may be at 400 (green line bellow), so the algorithm will start counting the peak once the signal goes above 400. The second
+threshold may be at 350 (purple line), marking the end of a peak and adding 1 to the count of peaks once the signal goes below 350. These values were
 determinted by manually inspecting the signal data and determining the best way to count the peaks.
 
-The following graph shows a close up of the telomeric region, with the green line showing the start threshold, the purple showing the stop threshold, 
-and the red line showing the telomere ceiling value from earlier. 
+The following graph shows a close up of the telomeric region, with the green line showing the start threshold, the purple showing the stop threshold,
+and the red line showing the telomere ceiling value from earlier.
 
 ![image](https://github.com/GreiderLab/TeloPeakCounter/assets/78556850/77af595f-ab3d-4b8f-9f7a-4de5474d45f4)
 
